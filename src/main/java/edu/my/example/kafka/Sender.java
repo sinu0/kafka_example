@@ -14,7 +14,11 @@ public class Sender {
     private KafkaTemplate<String,String> kafkaTemplate;
 
     public void send(String topic, String payload){
-        log.info("sending payload='{}' to topic ='{}'",payload,topic);
-        kafkaTemplate.send(topic,payload);
+        int i=10;
+        while(i>0) {
+            log.info("sending payload='{}' to topic ='{}'", payload, topic);
+            kafkaTemplate.send(topic, payload);
+            i--;
+        }
     }
 }
